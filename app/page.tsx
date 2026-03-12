@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import './page.css'
 
 const t = {
@@ -71,6 +72,7 @@ const t = {
 
 export default function Home() {
   const [formStatus, setFormStatus] = useState('')
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -164,7 +166,7 @@ export default function Home() {
               { src: '/videos/Girl.mp4', label: 'Social Media Ad' },
               { src: '/videos/man.mp4', label: 'Werbe-Video' },
             ].map((v, i) => (
-              <div key={i} className="video-card">
+              <div key={i} className="video-card" onClick={() => setLightboxSrc(v.src)}>
                 <video
                   src={v.src}
                   muted
@@ -173,7 +175,7 @@ export default function Home() {
                   onMouseEnter={e => (e.currentTarget as HTMLVideoElement).play()}
                   onMouseLeave={e => { (e.currentTarget as HTMLVideoElement).pause(); (e.currentTarget as HTMLVideoElement).currentTime = 0; }}
                 />
-                <div className="video-label">{v.label}</div>
+                <div className="video-label">▶ {v.label}</div>
               </div>
             ))}
           </div>
@@ -226,9 +228,11 @@ export default function Home() {
         <div className="container">
           <h2>{t.refsTitle}</h2>
           <p className="section-subtitle">{t.refsSubtitle}</p>
-          <div className="refs-strip">
-            {['E-Commerce', 'Mittelstand', 'Industrie', 'Marktplätze', 'Start-ups', 'Handel'].map((r, i) => (
-              <div key={i} className="ref-pill">{r}</div>
+          <div className="brands-grid">
+            {[1,2,3,4].map(i => (
+              <div key={i} className="brand-item">
+                <Image src={`/brands/brand-${i}.svg`} alt={`Partner Brand ${i}`} width={160} height={60} style={{objectFit:'contain', filter:'brightness(0) invert(0.7)'}} />
+              </div>
             ))}
           </div>
         </div>
@@ -296,6 +300,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Lightbox */}
+      {lightboxSrc && (
+        <div className="lightbox" onClick={() => setLightboxSrc(null)}>
+          <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setLightboxSrc(null)}>✕</button>
+            <video src={lightboxSrc} controls autoPlay className="lightbox-video" />
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <div className="container">
