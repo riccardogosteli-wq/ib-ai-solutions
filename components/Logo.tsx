@@ -22,29 +22,18 @@ export default function Logo({ size = 'md' }: LogoProps) {
         style={{ flexShrink: 0, display: 'block' }}
       />
 
-      {/* ── AI + Solutions text ── */}
-      <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1, gap: 0 }}>
-        {/* "AI" — pure white bold */}
-        <span style={{
-          color: '#ffffff',
-          fontWeight: 800,
-          fontSize,
-          fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
-          letterSpacing: '-0.03em',
-        }}>AI</span>
-
-        {/* "Solutions" — gradient indigo→purple */}
-        <span style={{
-          fontWeight: 700,
-          fontSize,
-          fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
-          letterSpacing: '-0.03em',
-          background: 'linear-gradient(90deg, #818cf8 0%, #a855f7 55%, #c026d3 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}>Solutions</span>
-      </span>
+      {/* ── AISolutions — single gradient across entire text ── */}
+      <span style={{
+        fontWeight: 800,
+        fontSize,
+        fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
+        letterSpacing: '-0.03em',
+        lineHeight: 1,
+        background: 'linear-gradient(90deg, #c4d0ff 0%, #9b8fff 35%, #8b5cf6 65%, #a21caf 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+      }}>AISolutions</span>
     </div>
   )
 }
