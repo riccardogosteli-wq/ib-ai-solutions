@@ -101,7 +101,6 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <div style={{ marginBottom: '1.5rem' }}><Logo size="lg" /></div>
             <div className="hero-tag">{t.heroTag}</div>
             <h1>{t.heroTitle}</h1>
             <p className="hero-subtitle">{t.heroSubtitle}</p>
@@ -111,6 +110,14 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual">
+            <div className="hero-video-wrap">
+              <video
+                src="/videos/produktvideos.mp4"
+                autoPlay muted loop playsInline
+                className="hero-video"
+              />
+              <div className="hero-video-label">▶ Produkt-Showcase</div>
+            </div>
             <div className="gradient-blob blob-1"></div>
             <div className="gradient-blob blob-2"></div>
           </div>
