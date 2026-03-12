@@ -230,13 +230,13 @@ export default function Home() {
           <p className="section-subtitle">{t.refsSubtitle}</p>
           <div className="brands-grid">
             {[
-              { file: 'brand-1.svg', alt: 'Kaufmann', w: 120, h: 90 },
-              { file: 'brand-2.svg', alt: 'Fitness Imperium', w: 80, h: 80 },
-              { file: 'brand-3.svg', alt: 'Kaiser', w: 160, h: 50 },
-              { file: 'brand-4.svg', alt: 'IB Elektroniks', w: 200, h: 40 },
+              { file: 'brand-1.svg', alt: 'Kaufmann' },
+              { file: 'brand-2.svg', alt: 'Fitness Imperium' },
+              { file: 'brand-3.svg', alt: 'Kaiser' },
+              { file: 'brand-4.svg', alt: 'IB Elektroniks' },
             ].map((b, i) => (
               <div key={i} className="brand-item">
-                <Image src={`/brands/${b.file}`} alt={b.alt} width={b.w} height={b.h} style={{objectFit:'contain'}} />
+                <Image src={`/brands/${b.file}`} alt={b.alt} width={140} height={60} style={{objectFit:'contain', maxWidth:'100%', maxHeight:'60px'}} />
               </div>
             ))}
           </div>
