@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Logo from '../components/Logo'
 import './page.css'
 
 const t = {
@@ -86,7 +87,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="container nav-container">
-          <div className="nav-brand">{t.navBrand}</div>
+          <Logo size="sm" />
           <div className="nav-links">
             <a href="#leistungen">Leistungen</a>
             <a href="#ablauf">Ablauf</a>
@@ -100,6 +101,7 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
+            <div style={{ marginBottom: '1.5rem' }}><Logo size="lg" /></div>
             <div className="hero-tag">{t.heroTag}</div>
             <h1>{t.heroTitle}</h1>
             <p className="hero-subtitle">{t.heroSubtitle}</p>
