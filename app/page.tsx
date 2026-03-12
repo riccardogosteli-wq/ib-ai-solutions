@@ -229,11 +229,22 @@ export default function Home() {
           <h2>{t.refsTitle}</h2>
           <p className="section-subtitle">{t.refsSubtitle}</p>
           <div className="brands-grid">
-            {[1,2,3,4].map(i => (
+            {[
+              { file: 'brand-1.svg', alt: 'Kaufmann', w: 120, h: 90 },
+              { file: 'brand-2.svg', alt: 'Fitness Imperium', w: 80, h: 80 },
+              { file: 'brand-3.svg', alt: 'Kaiser', w: 160, h: 50 },
+              { file: 'brand-4.svg', alt: 'IB Elektroniks', w: 200, h: 40 },
+            ].map((b, i) => (
               <div key={i} className="brand-item">
-                <Image src={`/brands/brand-${i}.svg`} alt={`Partner Brand ${i}`} width={160} height={60} style={{objectFit:'contain', filter:'brightness(0) invert(0.7)'}} />
+                <Image src={`/brands/${b.file}`} alt={b.alt} width={b.w} height={b.h} style={{objectFit:'contain'}} />
               </div>
             ))}
+          </div>
+
+          {/* Trustami Certificate */}
+          <div className="trustami-wrap">
+            <Image src="/brands/certificate.svg" alt="Trustami – 11.051 Bewertungen" width={120} height={120} />
+            <p className="trustami-text">Über 11.000 verifizierte Bewertungen auf Trustami</p>
           </div>
         </div>
       </section>
