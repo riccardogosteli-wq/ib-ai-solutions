@@ -2,57 +2,60 @@ import React from 'react'
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg'
-  showText?: boolean
 }
 
-export default function Logo({ size = 'md', showText = true }: LogoProps) {
-  const iconSize = size === 'sm' ? 28 : size === 'lg' ? 52 : 38
-  const fontSize = size === 'sm' ? '0.95rem' : size === 'lg' ? '1.8rem' : '1.25rem'
-  const ibSize = size === 'sm' ? '0.75rem' : size === 'lg' ? '1.4rem' : '1rem'
+export default function Logo({ size = 'md' }: LogoProps) {
+  const iconSize  = size === 'sm' ? 32  : size === 'lg' ? 56  : 40
+  const fontSize  = size === 'sm' ? 18  : size === 'lg' ? 32  : 24
+  const ibFont    = size === 'sm' ? 11  : size === 'lg' ? 19  : 14
+  const radius    = Math.round(iconSize * 0.22)
+  const gap       = size === 'sm' ? 8   : size === 'lg' ? 14  : 10
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', userSelect: 'none' }}>
-      {/* IB Icon */}
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap, userSelect: 'none' }}>
+
+      {/* ── IB icon ── */}
       <div style={{
-        width: iconSize,
-        height: iconSize,
-        borderRadius: '22%',
-        background: 'linear-gradient(145deg, #3b82f6 0%, #4f46e5 50%, #7c3aed 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: iconSize, height: iconSize,
+        borderRadius: radius,
+        background: 'linear-gradient(145deg, #4f8ef7 0%, #5b5bd6 55%, #7c3aed 100%)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
-        boxShadow: '0 2px 10px rgba(99,102,241,0.4)',
+        boxShadow: `0 4px 14px rgba(99,102,241,0.55)`,
       }}>
         <span style={{
           color: '#fff',
-          fontWeight: 800,
-          fontSize: ibSize,
-          letterSpacing: '-0.03em',
-          fontFamily: "'Segoe UI', system-ui, sans-serif",
+          fontWeight: 900,
+          fontSize: ibFont,
+          letterSpacing: '-0.04em',
+          fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
           lineHeight: 1,
         }}>IB</span>
       </div>
 
-      {/* Text: AI + Solutions */}
-      {showText && (
-        <span style={{ display: 'flex', alignItems: 'baseline', gap: 0, lineHeight: 1 }}>
-          <span style={{
-            color: '#fff',
-            fontWeight: 800,
-            fontSize,
-            fontFamily: "'Segoe UI', system-ui, sans-serif",
-            letterSpacing: '-0.02em',
-          }}>AI</span>
-          <span style={{
-            color: '#a855f7',
-            fontWeight: 700,
-            fontSize,
-            fontFamily: "'Segoe UI', system-ui, sans-serif",
-            letterSpacing: '-0.02em',
-          }}>Solutions</span>
-        </span>
-      )}
+      {/* ── AI + Solutions text ── */}
+      <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1, gap: 0 }}>
+        {/* "AI" — pure white bold */}
+        <span style={{
+          color: '#ffffff',
+          fontWeight: 800,
+          fontSize,
+          fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
+          letterSpacing: '-0.03em',
+        }}>AI</span>
+
+        {/* "Solutions" — gradient indigo→purple */}
+        <span style={{
+          fontWeight: 700,
+          fontSize,
+          fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif",
+          letterSpacing: '-0.03em',
+          background: 'linear-gradient(90deg, #818cf8 0%, #a855f7 55%, #c026d3 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>Solutions</span>
+      </span>
     </div>
   )
 }
