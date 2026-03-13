@@ -110,13 +110,13 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-video-wrap">
+            <div className="hero-video-wrap" onClick={() => setLightboxSrc('/videos/produktvideos.mp4')} style={{cursor:'pointer'}}>
               <video
                 src="/videos/produktvideos.mp4"
                 autoPlay muted loop playsInline
                 className="hero-video"
               />
-              <div className="hero-video-label">▶ Produkt-Showcase</div>
+              <div className="hero-video-label">▶ Klicken zum Abspielen</div>
             </div>
             <div className="gradient-blob blob-1"></div>
             <div className="gradient-blob blob-2"></div>
