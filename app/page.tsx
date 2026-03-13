@@ -11,7 +11,7 @@ const de = {
   heroTitle: 'KI-Videos für Ihr Unternehmen',
   heroSubtitle: 'Hochwertige Produkt- und Werbevideos mit modernster KI-Technologie — ohne Filmteam, ohne Studio.',
   heroCta: 'Jetzt Projekt besprechen',
-  heroSub: 'Unverbindlich · Kostenlos · In 24h Rückmeldung',
+  heroSub: 'Unverbindlich · Kostenlos · Rückmeldung innert 24h',
 
   statsTitle: 'Warum KI-Produktion?',
   stat1: 'Bis zu 8× günstiger als klassische Studioproduktion',
