@@ -172,7 +172,6 @@ export default function Home() {
               { src: '/videos/E_913_X.mp4', label: 'Industrie-Video' },
               { src: '/videos/EH4747.mp4', label: 'Premium-Produktion' },
               { src: '/videos/Earth.mp4', label: 'Brand-Video' },
-              { src: '/videos/Girl.mp4', label: 'Social Media Ad' },
               { src: '/videos/man.mp4', label: 'Werbe-Video' },
             ].map((v, i) => (
               <div key={i} className="video-card" onClick={() => setLightboxSrc(v.src)}>
