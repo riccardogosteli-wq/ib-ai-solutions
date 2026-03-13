@@ -5,10 +5,10 @@ import Image from 'next/image'
 import Logo from '../components/Logo'
 import './page.css'
 
-const t = {
+const de = {
   navBrand: 'IB AI Solutions',
   heroTag: '🇨🇭 Für den Schweizer Markt',
-  heroTitle: 'KI-Videos für Ihr Business',
+  heroTitle: 'KI-Videos für Ihr Unternehmen',
   heroSubtitle: 'Hochwertige Produkt- und Werbevideos mit modernster KI-Technologie — ohne Filmteam, ohne Studio.',
   heroCta: 'Jetzt Projekt besprechen',
   heroSub: 'Unverbindlich · Kostenlos · In 24h Rückmeldung',
@@ -71,7 +71,75 @@ const t = {
   footerText: '© 2026 IB AI Solutions · Partner von IB-Elektroniks · Für den Schweizer Markt',
 }
 
+const en = {
+  navBrand: 'IB AI Solutions',
+  heroTag: '🇨🇭 For the Swiss Market',
+  heroTitle: 'AI Videos for Your Business',
+  heroSubtitle: 'High-quality product and promotional videos with state-of-the-art AI technology — no film crew, no studio.',
+  heroCta: 'Discuss Your Project',
+  heroSub: 'Non-binding · Free · Response within 24h',
+
+  statsTitle: 'Why AI Production?',
+  stat1: 'Up to 8× cheaper than traditional studio production',
+  stat2: 'Ready in 7–14 days — no filming required',
+  stat3: 'Instantly usable for shop, ads & social media',
+
+  servicesTitle: 'Our Services',
+  servicesSubtitle: 'Tailored AI video production for your business',
+  service1Title: 'Product Video',
+  service1Desc: 'Professional product presentation directly from your product images — ideal for shops, marketplaces and product pages.',
+  service1List: ['Concept & Script', 'AI video production from images', 'Editing & Post-production', 'For shop, Amazon & marketplaces'],
+  service2Title: 'Promotional Video',
+  service2Desc: 'Emotional promotional videos for social media, ads and online campaigns — that truly reach your target audience.',
+  service2List: ['Story & Script', 'Visual Concept', 'Voiceover & Sound', 'For Meta, YouTube & TikTok Ads'],
+  service3Title: 'Explainer Video',
+  service3Desc: 'Complex products or processes explained clearly — ideal for industry, technology and solutions that need explanation.',
+  service3List: ['Structured storytelling', 'Visualization of processes', 'Cinematic transitions & effects', 'For B2B, trade fairs & sales'],
+
+  ablaufTitle: 'How Does a Project Work?',
+  ablaufSubtitle: 'From the first idea to the finished video — structured, transparent and efficient.',
+  steps: [
+    { num: '01', title: 'Inquiry & Initial Consultation', desc: 'You describe your project and goals. We discuss which video format fits best and how to communicate your value optimally.' },
+    { num: '02', title: 'Story & Concept', desc: 'Our team develops a tailored concept: core message, target audience, tone and visual style — aligned with your brand.' },
+    { num: '03', title: 'Script & Storyboard', desc: 'The script is developed and visualized in a storyboard. You see exactly what will be created — before production begins.' },
+    { num: '04', title: 'Send Images & Material', desc: 'You provide your product images, logos and relevant information. In most cases, existing images are fully sufficient.' },
+    { num: '05', title: 'AI Production', desc: 'Our AI video team produces the video — no filming, no equipment. High quality, fast and cost-efficient.' },
+    { num: '06', title: 'Feedback & Approval', desc: 'You receive a preview and can share change requests. We adjust until the video is perfect — then deliver the final video.' },
+  ],
+
+  whyTitle: 'What AI Videos Deliver',
+  why1Title: 'Products Are Understood',
+  why1Desc: 'Videos make the product benefit immediately clear. Customers see application and advantages — and decide faster.',
+  why2Title: 'Less Purchase Hesitation',
+  why2Desc: 'When the product benefit is visually clear, the barrier lowers. More trust — more conversions.',
+  why3Title: 'Scalable & Efficient',
+  why3Desc: 'Instead of 1 video per year: 10–50 videos per quarter. Every product optimally presented, without exploding costs.',
+  why4Title: 'Ready to Use Immediately',
+  why4Desc: 'Ready for shop listings, Google & Meta Ads, social media and marketplaces like Amazon.',
+
+  refsTitle: 'Brands That Rely on AI Videos',
+  refsSubtitle: 'Companies from retail, industry and e-commerce trust our productions.',
+
+  aboutTitle: 'About IB AI Solutions',
+  aboutText: 'IB AI Solutions was born from practice: IB-Elektroniks, active in e-commerce since 2009, developed AI video production initially for their own sales. The results were convincing — and today we help companies across the DACH region market their products more efficiently with AI videos. Practical, proven, made for real business.',
+
+  formTitle: 'Request a Project',
+  formSubtitle: 'Tell us about your project — we will get back to you within 24 hours.',
+  formName: 'Your Name',
+  formEmail: 'Email',
+  formPhone: 'Phone (optional)',
+  formCompany: 'Company',
+  formService: 'Desired Service',
+  formMessage: 'Describe your product / project',
+  formSubmit: 'Send Inquiry →',
+  formSuccess: '✅ Thank you! We will get back to you within 24 hours.',
+
+  footerText: '© 2026 IB AI Solutions · Partner of IB-Elektroniks · For the Swiss Market',
+}
+
 export default function Home() {
+  const [lang, setLang] = useState<'de' | 'en'>('de')
+  const t = lang === 'de' ? de : en
   const [formStatus, setFormStatus] = useState('')
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
 
@@ -89,11 +157,17 @@ export default function Home() {
         <div className="container nav-container">
           <Logo size="sm" />
           <div className="nav-links">
-            <a href="#leistungen">Leistungen</a>
-            <a href="#ablauf">Ablauf</a>
-            <a href="#ueber-uns">Über uns</a>
-            <a href="#anfrage" className="nav-cta">Projekt anfragen</a>
+            <a href="#leistungen">{lang === 'de' ? 'Leistungen' : 'Services'}</a>
+            <a href="#ablauf">{lang === 'de' ? 'Ablauf' : 'Process'}</a>
+            <a href="#ueber-uns">{lang === 'de' ? 'Über uns' : 'About'}</a>
+            <a href="#anfrage" className="nav-cta">{lang === 'de' ? 'Projekt anfragen' : 'Request Project'}</a>
           </div>
+          <button
+            onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}
+            className="lang-toggle"
+          >
+            {lang === 'de' ? 'EN' : 'DE'}
+          </button>
         </div>
       </nav>
 
@@ -116,7 +190,7 @@ export default function Home() {
                 autoPlay muted loop playsInline
                 className="hero-video"
               />
-              <div className="hero-video-label">▶ Klicken zum Abspielen</div>
+              <div className="hero-video-label">▶ {lang === 'de' ? 'Klicken zum Abspielen' : 'Click to Play'}</div>
             </div>
             <div className="gradient-blob blob-1"></div>
             <div className="gradient-blob blob-2"></div>
@@ -153,7 +227,7 @@ export default function Home() {
                 <ul className="service-list">
                   {s.list.map((item, j) => <li key={j}>✓ {item}</li>)}
                 </ul>
-                <a href="#anfrage" className="service-cta">Anfrage stellen →</a>
+                <a href="#anfrage" className="service-cta">{lang === 'de' ? 'Anfrage stellen →' : 'Get in touch →'}</a>
               </div>
             ))}
           </div>
@@ -163,16 +237,16 @@ export default function Home() {
       {/* Video Showcase */}
       <section className="showcase">
         <div className="container">
-          <h2>Beispiel-Videos</h2>
-          <p className="section-subtitle">Sehen Sie, was mit KI-Produktion möglich ist</p>
+          <h2>{lang === 'de' ? 'Beispiel-Videos' : 'Example Videos'}</h2>
+          <p className="section-subtitle">{lang === 'de' ? 'Sehen Sie, was mit KI-Produktion möglich ist' : 'See what AI production makes possible'}</p>
           <div className="video-grid">
             {[
-              { src: '/videos/produktvideos.mp4', label: 'Produkt-Showcase' },
-              { src: '/videos/product-video.mp4', label: 'Produkt-Präsentation' },
-              { src: '/videos/E_913_X.mp4', label: 'Industrie-Video' },
-              { src: '/videos/EH4747.mp4', label: 'Premium-Produktion' },
-              { src: '/videos/Earth.mp4', label: 'Brand-Video' },
-              { src: '/videos/man.mp4', label: 'Werbe-Video' },
+              { src: '/videos/produktvideos.mp4', label: lang === 'de' ? 'Produkt-Showcase' : 'Product Showcase' },
+              { src: '/videos/product-video.mp4', label: lang === 'de' ? 'Produkt-Präsentation' : 'Product Presentation' },
+              { src: '/videos/E_913_X.mp4', label: lang === 'de' ? 'Industrie-Video' : 'Industry Video' },
+              { src: '/videos/EH4747.mp4', label: lang === 'de' ? 'Premium-Produktion' : 'Premium Production' },
+              { src: '/videos/Earth.mp4', label: lang === 'de' ? 'Brand-Video' : 'Brand Video' },
+              { src: '/videos/man.mp4', label: lang === 'de' ? 'Werbe-Video' : 'Promo Video' },
             ].map((v, i) => (
               <div key={i} className="video-card" onClick={() => setLightboxSrc(v.src)}>
                 <video
@@ -252,7 +326,7 @@ export default function Home() {
           {/* Trustami Certificate */}
           <div className="trustami-wrap">
             <Image src="/brands/certificate.svg" alt="Trustami – 11.051 Bewertungen" width={120} height={120} />
-            <p className="trustami-text">Über 11.000 verifizierte Bewertungen auf Trustami</p>
+            <p className="trustami-text">{lang === 'de' ? 'Über 11.000 verifizierte Bewertungen auf Trustami' : 'Over 11,000 verified reviews on Trustami'}</p>
           </div>
         </div>
       </section>
@@ -260,13 +334,13 @@ export default function Home() {
       {/* About */}
       <section id="ueber-uns" className="about">
         <div className="container about-inner">
-          <div className="about-badge">Über uns</div>
+          <div className="about-badge">{lang === 'de' ? 'Über uns' : 'About us'}</div>
           <h2>{t.aboutTitle}</h2>
           <p>{t.aboutText}</p>
           <div className="about-stats">
-            <div><strong>Seit 2009</strong><span>Im E-Commerce aktiv</span></div>
-            <div><strong>7–14 Tage</strong><span>Produktionszeit</span></div>
-            <div><strong>Bis 8×</strong><span>Günstiger als Studio</span></div>
+            <div><strong>{lang === 'de' ? 'Seit 2009' : 'Since 2009'}</strong><span>{lang === 'de' ? 'Im E-Commerce aktiv' : 'Active in e-commerce'}</span></div>
+            <div><strong>7–14 {lang === 'de' ? 'Tage' : 'Days'}</strong><span>{lang === 'de' ? 'Produktionszeit' : 'Production time'}</span></div>
+            <div><strong>{lang === 'de' ? 'Bis 8×' : 'Up to 8×'}</strong><span>{lang === 'de' ? 'Günstiger als Studio' : 'Cheaper than studio'}</span></div>
           </div>
         </div>
       </section>
@@ -301,17 +375,17 @@ export default function Home() {
                   <div className="form-group">
                     <select name="service" required>
                       <option value="">{t.formService}</option>
-                      <option value="produkt">Produkt-Video</option>
-                      <option value="werbung">Werbevideo</option>
-                      <option value="erklaer">Erklär-Video</option>
-                      <option value="sonstiges">Sonstiges / Noch unklar</option>
+                      <option value="produkt">{lang === 'de' ? 'Produkt-Video' : 'Product Video'}</option>
+                      <option value="werbung">{lang === 'de' ? 'Werbevideo' : 'Promotional Video'}</option>
+                      <option value="erklaer">{lang === 'de' ? 'Erklär-Video' : 'Explainer Video'}</option>
+                      <option value="sonstiges">{lang === 'de' ? 'Sonstiges / Noch unklar' : 'Other / Not sure yet'}</option>
                     </select>
                   </div>
                   <div className="form-group">
                     <textarea name="message" placeholder={t.formMessage} rows={4}></textarea>
                   </div>
                   <button type="submit" className="btn-primary full-width" disabled={formStatus === 'sending'}>
-                    {formStatus === 'sending' ? 'Wird gesendet...' : t.formSubmit}
+                    {formStatus === 'sending' ? (lang === 'de' ? 'Wird gesendet...' : 'Sending...') : t.formSubmit}
                   </button>
                 </form>
               )}

@@ -347,3 +347,18 @@ select option { background: var(--bg2); }
   .about-stats { gap: 2rem; }
   .video-grid { grid-template-columns: 1fr; }
 }
+
+.lang-toggle {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.15s;
+  margin-left: 0.5rem;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.2); }
