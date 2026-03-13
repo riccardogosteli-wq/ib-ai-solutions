@@ -175,7 +175,6 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <div className="hero-tag">{t.heroTag}</div>
             <h1>{t.heroTitle}</h1>
             <p className="hero-subtitle">{t.heroSubtitle}</p>
             <div className="hero-actions">
