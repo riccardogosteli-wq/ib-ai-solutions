@@ -188,6 +188,7 @@ export default function Home() {
                 src="/videos/produktvideos.mp4"
                 autoPlay muted loop playsInline
                 className="hero-video"
+                style={{pointerEvents:'none'}}
               />
               <div className="hero-video-label">▶ {lang === 'de' ? 'Klicken zum Abspielen' : 'Click to Play'}</div>
             </div>
