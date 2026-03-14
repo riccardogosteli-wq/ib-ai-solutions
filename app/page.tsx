@@ -241,19 +241,21 @@ export default function Home() {
           <p className="section-subtitle">{lang === 'de' ? 'Sehen Sie, was mit KI-Produktion möglich ist' : 'See what AI production makes possible'}</p>
           <div className="video-grid">
             {[
-              { src: '/videos/produktvideos.mp4', label: lang === 'de' ? 'Produkt-Showcase' : 'Product Showcase' },
-              { src: '/videos/product-video.mp4', label: lang === 'de' ? 'Produkt-Präsentation' : 'Product Presentation' },
-              { src: '/videos/E_913_X.mp4', label: lang === 'de' ? 'Industrie-Video' : 'Industry Video' },
-              { src: '/videos/EH4747.mp4', label: lang === 'de' ? 'Premium-Produktion' : 'Premium Production' },
-              { src: '/videos/Earth.mp4', label: lang === 'de' ? 'Brand-Video' : 'Brand Video' },
-              { src: '/videos/man.mp4', label: lang === 'de' ? 'Werbe-Video' : 'Promo Video' },
+              { src: '/videos/produktvideos.mp4', poster: '/thumbnails/produktvideos.jpg', label: lang === 'de' ? 'Produkt-Showcase' : 'Product Showcase' },
+              { src: '/videos/product-video.mp4', poster: '/thumbnails/product-video.jpg', label: lang === 'de' ? 'Produkt-Präsentation' : 'Product Presentation' },
+              { src: '/videos/E_913_X.mp4', poster: '/thumbnails/E_913_X.jpg', label: lang === 'de' ? 'Industrie-Video' : 'Industry Video' },
+              { src: '/videos/EH4747.mp4', poster: '/thumbnails/EH4747.jpg', label: lang === 'de' ? 'Premium-Produktion' : 'Premium Production' },
+              { src: '/videos/Earth.mp4', poster: '/thumbnails/Earth.jpg', label: lang === 'de' ? 'Brand-Video' : 'Brand Video' },
+              { src: '/videos/man.mp4', poster: '/thumbnails/man.jpg', label: lang === 'de' ? 'Werbe-Video' : 'Promo Video' },
             ].map((v, i) => (
               <div key={i} className="video-card" onClick={() => setLightboxSrc(v.src)}>
                 <video
                   src={v.src}
+                  poster={v.poster}
                   muted
                   loop
                   playsInline
+                  preload="none"
                   onMouseEnter={e => (e.currentTarget as HTMLVideoElement).play()}
                   onMouseLeave={e => { (e.currentTarget as HTMLVideoElement).pause(); (e.currentTarget as HTMLVideoElement).currentTime = 0; }}
                 />

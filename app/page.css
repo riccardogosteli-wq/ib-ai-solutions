@@ -346,6 +346,15 @@ select option { background: var(--bg2); }
   .nav-links a:not(.nav-cta) { display: none; }
   .about-stats { gap: 2rem; }
   .video-grid { grid-template-columns: 1fr; }
+  /* Left-align all text on mobile */
+  .hero h1, .hero-subtitle, .hero-bullets,
+  .services h2, .section-subtitle,
+  .showcase h2, .why-section h2,
+  .ablauf h2, .references h2,
+  .contact h2 {
+    text-align: left;
+  }
+  .section-subtitle { margin-bottom: 1.5rem; }
 }
 
 .lang-toggle {
