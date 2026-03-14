@@ -401,7 +401,7 @@ export default function Home() {
         <div className="lightbox" onClick={() => setLightboxSrc(null)}>
           <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
             <button className="lightbox-close" onClick={() => setLightboxSrc(null)}>✕</button>
-            <video src={lightboxSrc} controls autoPlay className="lightbox-video" />
+            <video src={lightboxSrc} controls autoPlay playsInline className="lightbox-video" style={{outline:'none'}} />
           </div>
         </div>
       )}

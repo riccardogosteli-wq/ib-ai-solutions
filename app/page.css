@@ -315,7 +315,7 @@ select option { background: var(--bg2); }
   border: 1px solid rgba(99,102,241,0.3);
   box-shadow: 0 0 80px rgba(99,102,241,0.2);
 }
-.lightbox-video { display: block; max-width: 90vw; max-height: 85vh; width: auto; }
+.lightbox-video { display: block; max-width: 90vw; max-height: 85vh; width: 90vw; }
 .lightbox-close {
   position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10;
   background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.15);
@@ -349,28 +349,30 @@ select option { background: var(--bg2); }
   .about-stats { gap: 2rem; }
   .video-grid { grid-template-columns: 1fr; }
 
-  /* Left-align all text on mobile */
-  .hero h1, .hero-subtitle, .hero-bullets,
-  .services h2, .section-subtitle,
-  .showcase h2, .why-section h2,
-  .ablauf h2, .references h2,
-  .contact h2 {
+  /* Left-align text blocks on mobile */
+  .services h2, .showcase h2, .why-section h2,
+  .ablauf h2, .references h2, .contact h2 {
     text-align: left;
   }
-  .section-subtitle { margin-bottom: 1.5rem; }
+  .section-subtitle { text-align: left; margin-bottom: 1.5rem; }
 
-  /* H1: simpler gradient that works on narrow screens */
+  /* H1: no gradient on mobile — just white, clean */
   .hero h1 {
-    font-size: 2.4rem;
-    background: linear-gradient(135deg, #fff 0%, #a5b4fc 60%, #7c3aed 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 2.2rem;
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
   }
 
-  /* Nav: keep CTA small, prevent overflow */
-  .nav-container { gap: 0.5rem; }
-  .nav-cta { font-size: 0.82rem; padding: 0.4rem 0.75rem; }
+  /* Nav: prevent CTA from wrapping/overflowing */
+  .nav-container { gap: 0.5rem; overflow: hidden; }
+  .nav-brand { font-size: 0.95rem; }
+  .nav-cta { font-size: 0.78rem !important; padding: 0.35rem 0.65rem !important; white-space: nowrap; }
+
+  /* Stats strip: stack vertically, hide dividers */
+  .stats-grid { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .stat-divider { display: none; }
+  .stat-item { font-size: 0.88rem; }
 }
 
 .lang-toggle {
