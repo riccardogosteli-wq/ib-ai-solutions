@@ -183,14 +183,15 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-video-wrap" onClick={() => setLightboxSrc('/videos/produktvideos.mp4')} style={{cursor:'pointer'}}>
+            <div className="hero-video-wrap" onClick={() => setLightboxSrc('/videos/produktvideos.mp4')} style={{cursor:'pointer', WebkitTapHighlightColor:'transparent'}}>
               <video
                 src="/videos/produktvideos.mp4"
                 autoPlay muted loop playsInline
                 className="hero-video"
-                style={{pointerEvents:'none'}}
+                style={{pointerEvents:'none', display:'block'}}
               />
-              <div className="hero-video-label">▶ {lang === 'de' ? 'Klicken zum Abspielen' : 'Click to Play'}</div>
+              <div className="hero-video-play-btn" aria-label="Play video">▶</div>
+              <div className="hero-video-label">{lang === 'de' ? 'Mit Ton abspielen' : 'Play with sound'}</div>
             </div>
             <div className="gradient-blob blob-1"></div>
             <div className="gradient-blob blob-2"></div>

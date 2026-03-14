@@ -102,11 +102,22 @@ h1,h2,h3 { margin-top: 0; }
   width: 100%; max-width: 520px;
 }
 .hero-video { width: 100%; display: block; border-radius: 16px; }
+.hero-video-play-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(79,70,229,0.85);
+  color: #fff; font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 0 24px rgba(79,70,229,0.5);
+  padding-left: 4px; /* optical center for ▶ */
+}
 .hero-video-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   background: linear-gradient(transparent, rgba(5,8,16,0.85));
   color: rgba(255,255,255,0.75); font-size: 0.8rem; padding: 1.5rem 1rem 0.75rem;
   text-align: center; letter-spacing: 0.05em;
+  pointer-events: none;
 }
 .gradient-blob { position: absolute; border-radius: 50%; filter: blur(70px); animation: float 7s ease-in-out infinite; }
 .blob-1 { width: 360px; height: 360px; background: radial-gradient(circle, rgba(59,130,246,0.35), transparent); top: 0; left: 20px; }
@@ -349,12 +360,22 @@ select option { background: var(--bg2); }
   .about-stats { gap: 2rem; }
   .video-grid { grid-template-columns: 1fr; }
 
-  /* Left-align text blocks on mobile */
+  /* Left-align ALL headings and subtitles on mobile */
+  h1, h2, h3,
+  .section-subtitle,
   .services h2, .showcase h2, .why-section h2,
-  .ablauf h2, .references h2, .contact h2 {
-    text-align: left;
+  .ablauf h2, .references h2, .contact h2,
+  .form-content h2, .form-content > p,
+  .about-inner, .about-inner * {
+    text-align: left !important;
   }
-  .section-subtitle { text-align: left; margin-bottom: 1.5rem; }
+  .section-subtitle { margin-bottom: 1.5rem; }
+
+  /* Hide last 2 video cards (Brand-Video + Werbe-Video) */
+  .video-card:nth-child(5),
+  .video-card:nth-child(6) {
+    display: none;
+  }
 
   /* H1: no gradient on mobile — just white, clean */
   .hero h1 {
