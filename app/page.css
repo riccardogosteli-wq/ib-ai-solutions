@@ -46,10 +46,12 @@ h1,h2,h3 { margin-top: 0; }
 .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
 .nav-links a:hover { color: #fff; }
 .nav-cta {
-  background: linear-gradient(135deg, var(--blue), var(--purple)) !important;
+  background: #4f46e5 !important;
   -webkit-text-fill-color: white !important; color: #fff !important;
-  padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600;
-  box-shadow: 0 0 20px rgba(99,102,241,0.3);
+  padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600;
+  box-shadow: 0 0 20px rgba(79,70,229,0.3);
+  white-space: nowrap;
+  font-size: 0.85rem;
 }
 
 /* HERO */
@@ -81,13 +83,13 @@ h1,h2,h3 { margin-top: 0; }
 
 .btn-primary {
   display: inline-block;
-  background: linear-gradient(135deg, var(--blue), var(--violet), var(--purple));
+  background: #4f46e5;
   color: #fff; padding: 0.9rem 2.2rem; border-radius: 8px;
   font-weight: 700; font-size: 1rem; text-decoration: none; border: none;
   cursor: pointer; transition: all 0.25s;
-  box-shadow: 0 4px 24px rgba(99,102,241,0.4);
+  box-shadow: 0 4px 24px rgba(79,70,229,0.45);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(99,102,241,0.6); }
+.btn-primary:hover { background: #4338ca; transform: translateY(-2px); box-shadow: 0 8px 36px rgba(79,70,229,0.6); }
 .btn-primary.full-width { width: 100%; text-align: center; }
 
 /* gradient blobs */
@@ -346,6 +348,7 @@ select option { background: var(--bg2); }
   .nav-links a:not(.nav-cta) { display: none; }
   .about-stats { gap: 2rem; }
   .video-grid { grid-template-columns: 1fr; }
+
   /* Left-align all text on mobile */
   .hero h1, .hero-subtitle, .hero-bullets,
   .services h2, .section-subtitle,
@@ -355,6 +358,19 @@ select option { background: var(--bg2); }
     text-align: left;
   }
   .section-subtitle { margin-bottom: 1.5rem; }
+
+  /* H1: simpler gradient that works on narrow screens */
+  .hero h1 {
+    font-size: 2.4rem;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 60%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Nav: keep CTA small, prevent overflow */
+  .nav-container { gap: 0.5rem; }
+  .nav-cta { font-size: 0.82rem; padding: 0.4rem 0.75rem; }
 }
 
 .lang-toggle {
