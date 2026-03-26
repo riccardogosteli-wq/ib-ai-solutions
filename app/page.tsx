@@ -146,8 +146,31 @@ export default function Home() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormStatus('sending')
-    // TODO: wire to email endpoint
-    setTimeout(() => setFormStatus('success'), 800)
+
+    const form = e.currentTarget
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      company: (form.elements.namedItem('company') as HTMLInputElement).value,
+      phone: (form.elements.namedItem('phone') as HTMLInputElement)?.value || '',
+      service: (form.elements.namedItem('service') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '',
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setFormStatus('success')
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
   }
 
   return (
@@ -357,6 +380,10 @@ export default function Home() {
               <p>{t.formSubtitle}</p>
               {formStatus === 'success' ? (
                 <div className="form-success-msg">{t.formSuccess}</div>
+              ) : formStatus === 'error' ? (
+                <div className="form-success-msg" style={{background:'#fef2f2',color:'#dc2626',borderColor:'#fecaca'}}>
+                  {lang === 'de' ? '❌ Fehler beim Senden. Bitte schreiben Sie uns direkt an info@ib-ai-solutions.ch' : '❌ Failed to send. Please email us directly at info@ib-ai-solutions.ch'}
+                </div>
               ) : (
                 <form onSubmit={handleFormSubmit}>
                   <div className="form-row">
